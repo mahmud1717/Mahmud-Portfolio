@@ -9,8 +9,17 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -316,6 +325,7 @@ const GraphicDesign = () => {
               <img
                 src={project.img}
                 alt={project.title}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                 referrerPolicy="no-referrer"
               />
@@ -366,6 +376,7 @@ const Volunteering = () => {
               <img
                 src={img}
                 alt={`Volunteering ${i + 1}`}
+                loading="lazy"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
@@ -378,6 +389,7 @@ const Volunteering = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
           >
             <h3 className="text-4xl md:text-6xl mb-6">MAKING A <span className="text-accent">DIFFERENCE</span></h3>
             <p className="text-text-primary/80 mb-10 text-lg">Dedicated to community service and social impact. From local infrastructure projects to educational initiatives, I believe in giving back and building a better future together.</p>
@@ -437,6 +449,7 @@ const Photography = () => {
               <img
                 src={img}
                 alt={`Photography ${i + 1}`}
+                loading="lazy"
                 className="w-full h-full object-cover aspect-square md:aspect-auto min-h-[300px] grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
