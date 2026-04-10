@@ -527,24 +527,32 @@ const Contact = () => {
               </p>
               
               <div className="space-y-6">
-                <div className="flex items-center gap-6">
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent">
+                <a 
+                  href="mailto:mh7688474@gmail.com"
+                  className="flex items-center gap-6 group cursor-pointer"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-bg-primary transition-all">
                     <Mail size={24} />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-text-secondary mb-1">Email Me</p>
-                    <p className="text-xl font-medium">mh7688474@gmail.com</p>
+                    <p className="text-xl font-medium group-hover:text-accent transition-colors">mh7688474@gmail.com</p>
                   </div>
-                </div>
-                <div className="flex items-center gap-6">
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent">
+                </a>
+                <a 
+                  href="https://www.facebook.com/mahmudhossain17"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-6 group cursor-pointer"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-bg-primary transition-all">
                     <Facebook size={24} />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-text-secondary mb-1">Follow Me</p>
-                    <p className="text-xl font-medium">@mahmudhossain17</p>
+                    <p className="text-xl font-medium group-hover:text-accent transition-colors">@mahmudhossain17</p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
@@ -554,6 +562,7 @@ const Contact = () => {
                   <label className="text-[10px] uppercase tracking-widest font-bold text-text-secondary ml-2">Name</label>
                   <input 
                     required
+                    name="name"
                     type="text" 
                     placeholder="John Doe"
                     value={formData.name}
@@ -565,6 +574,7 @@ const Contact = () => {
                   <label className="text-[10px] uppercase tracking-widest font-bold text-text-secondary ml-2">Email</label>
                   <input 
                     required
+                    name="email"
                     type="email" 
                     placeholder="john@example.com"
                     value={formData.email}
@@ -577,6 +587,7 @@ const Contact = () => {
                 <label className="text-[10px] uppercase tracking-widest font-bold text-text-secondary ml-2">Message</label>
                 <textarea 
                   required
+                  name="message"
                   rows={5}
                   placeholder="Tell me about your project..."
                   value={formData.message}
