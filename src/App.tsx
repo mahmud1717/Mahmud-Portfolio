@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Camera, Instagram, Facebook, Twitter, ArrowDown, ExternalLink, Mail, Github, Menu, X } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 
 // --- Components ---
 
@@ -154,6 +154,7 @@ const Hero = () => {
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(214, 255, 92, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => document.getElementById('graphic-design')?.scrollIntoView({ behavior: 'smooth' })}
                 className="px-10 py-4 bg-accent text-bg-primary font-black rounded-2xl uppercase tracking-widest"
               >
                 Explore Work
@@ -190,9 +191,9 @@ const Hero = () => {
             >
               <div className="absolute inset-0 bg-accent/20 blur-3xl group-hover:bg-accent/30 transition-all duration-700 rounded-full" />
               <img
-                src="https://i.ibb.co.com/gMsb9vgS/mm-p.jpg"
+                src="https://lh3.googleusercontent.com/d/1UPHhhK5egra-vzKlwP1TnVxJ2XTtlAib"
                 alt="Mahmud Hossain"
-                className="relative z-10 w-full max-w-md mx-auto rounded-[30px] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                className="relative z-10 w-full max-w-md mx-auto rounded-[30px] shadow-2xl transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
               
@@ -278,6 +279,7 @@ const About = () => {
 
           <motion.button
             whileHover={{ x: 10 }}
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="flex items-center gap-4 text-accent font-bold uppercase tracking-widest pt-8"
           >
             Learn More <ExternalLink size={18} />
@@ -306,6 +308,7 @@ const GraphicDesign = () => {
           </div>
           <motion.button 
             whileHover={{ scale: 1.05 }}
+            onClick={() => document.getElementById('photography')?.scrollIntoView({ behavior: 'smooth' })}
             className="hidden md:block px-8 py-3 border border-accent/30 rounded-full text-xs uppercase tracking-widest hover:bg-accent hover:text-bg-primary transition-all"
           >
             View All Projects
@@ -316,17 +319,21 @@ const GraphicDesign = () => {
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
               className="group relative aspect-[4/3] overflow-hidden rounded-[30px] bg-bg-secondary"
             >
-              <img
+              <motion.img
+                initial={{ filter: "grayscale(100%)" }}
+                whileInView={{ filter: "grayscale(0%)" }}
+                transition={{ duration: 1.5, delay: i * 0.2 }}
+                viewport={{ once: true }}
                 src={project.img}
                 alt={project.title}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
@@ -352,7 +359,7 @@ const Volunteering = () => {
   const volunteerImages = [
     "https://i.ibb.co.com/Xf49dstm/Whats-App-Image-2026-04-04-at-8-53-20-PM.jpg",
     "https://i.ibb.co.com/204jSZh0/Whats-App-Image-2026-04-04-at-8-53-21-PM.jpg",
-    "https://i.ibb.co.com/prQ3Vzs8/Whats-App-Image-2026-04-04-at-8-53-17-PM.jpg",
+    "https://lh3.googleusercontent.com/d/1LcrKo4f8i8XZLR2De1UlAgTamlf3Ltzm",
     "https://i.ibb.co.com/7JJ27rCS/Whats-App-Image-2026-04-04-at-8-53-19-PM.jpg"
   ];
 
@@ -373,11 +380,15 @@ const Volunteering = () => {
               viewport={{ once: true }}
               className="relative aspect-[4/3] overflow-hidden rounded-[30px] group"
             >
-              <img
+              <motion.img
+                initial={{ filter: "grayscale(100%)" }}
+                whileInView={{ filter: "grayscale(0%)" }}
+                transition={{ duration: 1.5, delay: i * 0.2 }}
+                viewport={{ once: true }}
                 src={img}
                 alt={`Volunteering ${i + 1}`}
                 loading="lazy"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -395,6 +406,7 @@ const Volunteering = () => {
             <p className="text-text-primary/80 mb-10 text-lg">Dedicated to community service and social impact. From local infrastructure projects to educational initiatives, I believe in giving back and building a better future together.</p>
             <motion.button
               whileHover={{ scale: 1.1 }}
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-12 py-4 border-2 border-accent text-accent font-black rounded-full uppercase tracking-[0.3em] text-sm"
             >
               Learn More
@@ -446,11 +458,15 @@ const Photography = () => {
                 i === 0 || i === 4 ? "md:col-span-2 md:row-span-2" : ""
               }`}
             >
-              <img
+              <motion.img
+                initial={{ filter: "grayscale(100%)" }}
+                whileInView={{ filter: "grayscale(0%)" }}
+                transition={{ duration: 1.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
                 src={img}
                 alt={`Photography ${i + 1}`}
                 loading="lazy"
-                className="w-full h-full object-cover aspect-square md:aspect-auto min-h-[300px] grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                className="w-full h-full object-cover aspect-square md:aspect-auto min-h-[300px] transition-all duration-1000 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
@@ -465,6 +481,38 @@ const Photography = () => {
 };
 
 const Contact = () => {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const response = await fetch("https://formspree.io/f/mh7688474@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
+  };
+
   return (
     <section id="contact" className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
@@ -500,21 +548,27 @@ const Contact = () => {
               </div>
             </div>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest font-bold text-text-secondary ml-2">Name</label>
                   <input 
+                    required
                     type="text" 
                     placeholder="John Doe"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest font-bold text-text-secondary ml-2">Email</label>
                   <input 
+                    required
                     type="email" 
                     placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors"
                   />
                 </div>
@@ -522,18 +576,45 @@ const Contact = () => {
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-widest font-bold text-text-secondary ml-2">Message</label>
                 <textarea 
+                  required
                   rows={5}
                   placeholder="Tell me about your project..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors resize-none"
                 />
               </div>
+              
               <motion.button
+                type="submit"
+                disabled={status === "loading"}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-5 bg-accent text-bg-primary font-black rounded-2xl uppercase tracking-[0.2em] glow-box"
+                className={`w-full py-5 font-black rounded-2xl uppercase tracking-[0.2em] glow-box transition-all ${
+                  status === "loading" ? "bg-accent/50 cursor-not-allowed" : "bg-accent text-bg-primary"
+                }`}
               >
-                Send Message
+                {status === "loading" ? "Sending..." : "Send Message"}
               </motion.button>
+
+              {status === "success" && (
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-accent text-center font-bold"
+                >
+                  Message sent successfully!
+                </motion.p>
+              )}
+              {status === "error" && (
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-center font-bold"
+                >
+                  Something went wrong. Please try again.
+                </motion.p>
+              )}
             </form>
           </div>
         </div>
