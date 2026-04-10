@@ -501,7 +501,8 @@ const Contact = () => {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+        mode: 'cors'
       });
 
       if (response.ok) {
@@ -518,13 +519,13 @@ const Contact = () => {
   return (
     <section id="contact" className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-bg-secondary rounded-[50px] p-10 md:p-20 relative overflow-hidden">
+        <div className="bg-bg-secondary rounded-[30px] md:rounded-[50px] p-6 md:p-20 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 blur-[100px] rounded-full -mr-48 -mt-48" />
           
-          <div className="grid md:grid-cols-2 gap-20 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 relative z-10">
             <div>
-              <h2 className="text-5xl md:text-7xl mb-8 leading-none">LET'S <br /> <span className="text-accent">COLLABORATE</span></h2>
-              <p className="text-text-secondary text-lg mb-12 max-w-md">
+              <h2 className="text-4xl md:text-7xl mb-6 md:mb-8 leading-none">LET'S <br /> <span className="text-accent">COLLABORATE</span></h2>
+              <p className="text-text-secondary text-base md:text-lg mb-8 md:mb-12 max-w-md">
                 Have a project in mind or just want to say hi? Feel free to reach out and let's create something amazing together.
               </p>
               
