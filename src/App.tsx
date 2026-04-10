@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Camera, Instagram, Facebook, Twitter, ArrowDown, ExternalLink, Mail, Github, Menu, X } from "lucide-react";
+import { Camera, Instagram, Facebook, Twitter, ArrowDown, ExternalLink, Mail, Github, Menu, X, Linkedin } from "lucide-react";
 import { useState, useEffect, useRef, FormEvent } from "react";
 
 // --- Components ---
@@ -106,9 +106,10 @@ const Navbar = () => {
           <div className="space-y-4">
             <p className="text-text-secondary uppercase tracking-widest text-xs font-bold">Socials</p>
             <div className="flex gap-6">
-              <Instagram className="hover:text-accent cursor-pointer" />
-              <Facebook className="hover:text-accent cursor-pointer" />
-              <Twitter className="hover:text-accent cursor-pointer" />
+              <a href="https://www.instagram.com/mahmudhossain17?igsh=MW80NHZqaDJhd3Rxcg==" target="_blank" rel="noopener noreferrer"><Instagram className="hover:text-accent cursor-pointer" /></a>
+              <a href="https://www.facebook.com/mahmudhossain17" target="_blank" rel="noopener noreferrer"><Facebook className="hover:text-accent cursor-pointer" /></a>
+              <a href="https://x.com/MahmudH90826919" target="_blank" rel="noopener noreferrer"><Twitter className="hover:text-accent cursor-pointer" /></a>
+              <a href="https://www.linkedin.com/in/mahmud-hossain-92b952323" target="_blank" rel="noopener noreferrer"><Linkedin className="hover:text-accent cursor-pointer" /></a>
             </div>
           </div>
           <p className="text-text-secondary text-xs uppercase tracking-widest">© 2026 Mahmud Hossain</p>
@@ -164,7 +165,8 @@ const Hero = () => {
                 {[
                   { Icon: Instagram, href: "https://www.instagram.com/mahmudhossain17?igsh=MW80NHZqaDJhd3Rxcg==" },
                   { Icon: Facebook, href: "https://www.facebook.com/mahmudhossain17" },
-                  { Icon: Twitter, href: "https://x.com/MahmudH90826919" }
+                  { Icon: Twitter, href: "https://x.com/MahmudH90826919" },
+                  { Icon: Linkedin, href: "https://www.linkedin.com/in/mahmud-hossain-92b952323" }
                 ].map(({ Icon, href }, i) => (
                   <motion.a
                     key={i}
@@ -551,6 +553,20 @@ const Contact = () => {
                   <div>
                     <p className="text-xs uppercase tracking-widest text-text-secondary mb-1">Follow Me</p>
                     <p className="text-xl font-medium group-hover:text-accent transition-colors">@mahmudhossain17</p>
+                  </div>
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/mahmud-hossain-92b952323"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-6 group cursor-pointer"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-bg-primary transition-all">
+                    <Linkedin size={24} />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-text-secondary mb-1">Connect</p>
+                    <p className="text-xl font-medium group-hover:text-accent transition-colors">Mahmud Hossain</p>
                   </div>
                 </a>
               </div>
