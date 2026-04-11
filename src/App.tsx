@@ -483,177 +483,82 @@ const Photography = () => {
 };
 
 const Contact = () => {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-
-    const data = new FormData();
-    data.append("name", formData.name);
-    data.append("email", formData.email);
-    data.append("message", formData.message);
-
-    try {
-      const response = await fetch("https://formspree.io/mh7688474@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _replyto: formData.email,
-          _subject: `New Portfolio Message from ${formData.name}`
-        })
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch (error) {
-      setStatus("error");
-    }
-  };
-
   return (
     <section id="contact" className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-bg-secondary rounded-[30px] md:rounded-[50px] p-6 md:p-20 relative overflow-hidden">
+        <div className="bg-bg-secondary rounded-[30px] md:rounded-[50px] p-10 md:p-24 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 blur-[100px] rounded-full -mr-48 -mt-48" />
           
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 relative z-10">
-            <div>
-              <h2 className="text-4xl md:text-7xl mb-6 md:mb-8 leading-none">LET'S <br /> <span className="text-accent">COLLABORATE</span></h2>
-              <p className="text-text-secondary text-base md:text-lg mb-8 md:mb-12 max-w-md">
-                Have a project in mind or just want to say hi? Feel free to reach out and let's create something amazing together.
+          <div className="relative z-10 text-center max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-5xl md:text-8xl mb-8 leading-none uppercase">
+                LET'S <span className="text-accent">CONNECT</span>
+              </h2>
+              <p className="text-text-secondary text-lg md:text-xl mb-16 max-w-2xl mx-auto">
+                I'm always open to new opportunities, collaborations, or just a friendly chat. 
+                Feel free to reach out through any of the platforms below.
               </p>
               
-              <div className="space-y-6">
-                <a 
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <motion.a 
+                  whileHover={{ y: -10 }}
                   href="mailto:mh7688474@gmail.com"
-                  className="flex items-center gap-6 group cursor-pointer"
+                  className="bg-white/5 p-10 rounded-[40px] border border-white/10 hover:border-accent/50 transition-all group"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-bg-primary transition-all">
-                    <Mail size={24} />
+                  <div className="w-16 h-16 rounded-2xl bg-accent text-bg-primary flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(214,255,92,0.3)]">
+                    <Mail size={32} />
                   </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-text-secondary mb-1">Email Me</p>
-                    <p className="text-xl font-medium group-hover:text-accent transition-colors">mh7688474@gmail.com</p>
-                  </div>
-                </a>
-                <a 
+                  <p className="text-xs uppercase tracking-[0.2em] text-text-secondary mb-2">Email Me</p>
+                  <p className="text-lg font-bold group-hover:text-accent transition-colors truncate">mh7688474@gmail.com</p>
+                </motion.a>
+
+                <motion.a 
+                  whileHover={{ y: -10 }}
                   href="https://www.facebook.com/mahmudhossain17"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-6 group cursor-pointer"
+                  className="bg-white/5 p-10 rounded-[40px] border border-white/10 hover:border-accent/50 transition-all group"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-bg-primary transition-all">
-                    <Facebook size={24} />
+                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-accent mx-auto mb-6 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+                    <Facebook size={32} />
                   </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-text-secondary mb-1">Follow Me</p>
-                    <p className="text-xl font-medium group-hover:text-accent transition-colors">@mahmudhossain17</p>
-                  </div>
-                </a>
-                <a 
+                  <p className="text-xs uppercase tracking-[0.2em] text-text-secondary mb-2">Facebook</p>
+                  <p className="text-lg font-bold group-hover:text-accent transition-colors">@mahmudhossain17</p>
+                </motion.a>
+
+                <motion.a 
+                  whileHover={{ y: -10 }}
                   href="https://www.linkedin.com/in/mahmud-hossain-92b952323"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-6 group cursor-pointer"
+                  className="bg-white/5 p-10 rounded-[40px] border border-white/10 hover:border-accent/50 transition-all group"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-bg-primary transition-all">
-                    <Linkedin size={24} />
+                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-accent mx-auto mb-6 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+                    <Linkedin size={32} />
                   </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-text-secondary mb-1">Connect</p>
-                    <p className="text-xl font-medium group-hover:text-accent transition-colors">Mahmud Hossain</p>
-                  </div>
-                </a>
+                  <p className="text-xs uppercase tracking-[0.2em] text-text-secondary mb-2">LinkedIn</p>
+                  <p className="text-lg font-bold group-hover:text-accent transition-colors">Mahmud Hossain</p>
+                </motion.a>
               </div>
-            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-text-secondary ml-2">Name</label>
-                  <input 
-                    required
-                    name="name"
-                    type="text" 
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-text-secondary ml-2">Email</label>
-                  <input 
-                    required
-                    name="email"
-                    type="email" 
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-widest font-bold text-text-secondary ml-2">Message</label>
-                <textarea 
-                  required
-                  name="message"
-                  rows={5}
-                  placeholder="Tell me about your project..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors resize-none"
-                />
-              </div>
-              
-              <motion.button
-                type="submit"
-                disabled={status === "loading"}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`w-full py-5 font-black rounded-2xl uppercase tracking-[0.2em] glow-box transition-all ${
-                  status === "loading" ? "bg-accent/50 cursor-not-allowed" : "bg-accent text-bg-primary"
-                }`}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="mt-20"
               >
-                {status === "loading" ? "Sending..." : "Send Message"}
-              </motion.button>
-
-              {status === "success" && (
-                <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-accent text-center font-bold"
+                <a 
+                  href="mailto:mh7688474@gmail.com"
+                  className="inline-block px-12 py-5 bg-accent text-bg-primary font-black rounded-2xl uppercase tracking-[0.3em] text-sm glow-box hover:scale-105 transition-transform"
                 >
-                  Message sent successfully!
-                </motion.p>
-              )}
-              {status === "error" && (
-                <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-center font-bold"
-                >
-                  Something went wrong. Please try again.
-                </motion.p>
-              )}
-            </form>
+                  Send an Email Now
+                </a>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
 
