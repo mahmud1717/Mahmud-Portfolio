@@ -494,6 +494,11 @@ const Contact = () => {
     e.preventDefault();
     setStatus("loading");
 
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("message", formData.message);
+
     try {
       const response = await fetch("https://formspree.io/mh7688474@gmail.com", {
         method: "POST",
@@ -501,8 +506,13 @@ const Contact = () => {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        body: JSON.stringify(formData),
-        mode: 'cors'
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: `New Portfolio Message from ${formData.name}`
+        })
       });
 
       if (response.ok) {
