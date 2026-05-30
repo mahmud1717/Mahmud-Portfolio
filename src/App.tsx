@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Camera, Instagram, Facebook, Twitter, ArrowDown, ExternalLink, Mail, Github, Menu, X, Linkedin } from "lucide-react";
 import { useState, useEffect, useRef, FormEvent } from "react";
+import Certificates from "./components/Certificates";
 
 // --- Components ---
 
@@ -23,7 +24,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ["About", "Graphic Design", "Volunteering", "Photography", "Contact"];
+  const navItems = ["About", "Graphic Design", "Volunteering", "Photography", "Certificates", "Contact"];
 
   return (
     <>
@@ -585,6 +586,7 @@ export default function App() {
       <GraphicDesign />
       <Volunteering />
       <Photography />
+      <Certificates />
       <Contact />
     </div>
   );
