@@ -22,6 +22,11 @@ import {
   AlertCircle
 } from "lucide-react";
 
+const scanUcc = new URL("../assets/images/certificate_ucc_1780076460078.png", import.meta.url).href;
+const scanGronthosala = new URL("../assets/images/certificate_gronthosala_1780076484644.png", import.meta.url).href;
+const scanTaanraat2020 = new URL("../assets/images/certificate_taanraat_2020_1780076511405.png", import.meta.url).href;
+const scanTaanraat2023 = new URL("../assets/images/certificate_taanraat_2023_1780076540677.png", import.meta.url).href;
+
 interface Certificate {
   id: string; // Internal lookup ID
   verificationId: string; // Official public verification code
@@ -62,7 +67,7 @@ const certificatesData: Certificate[] = [
     category: "academic",
     description: "Awarded in highly prestigious recognition of achieving an outstanding result with GPA 5.00 in the HSC Examination-2023, celebrating dedication, excellence, and academic distinction.",
     banglaDesc: "এইচএসসি পরীক্ষা-২০২৩-এ জিপিএ ৫.০০ পেয়ে জাঁকজমকপূর্ণ সাফল্য অর্জনের গৌরবময় স্বীকৃতিস্বরূপ এই সম্মাননা সনদ প্রদান করা হলো।",
-    scanUrl: "/src/assets/images/certificate_ucc_1780076460078.png",
+    scanUrl: scanUcc,
     govRegNo: "Gov. Reg. No: C-52834",
     sha256: "9fa31b2e185cd4bc7758ea0df083818e32c3f86e392dfbfa6da110ec9477fb0c",
     registeredOn: "30-12-2023 14:32:10 UTC",
@@ -83,7 +88,7 @@ const certificatesData: Certificate[] = [
     location: "Tahfizul Quran Cadet Madrasa, Bangladesh",
     category: "appreciation",
     description: "Awarded for brilliant and dedicated performance as a Co-Ordinator and Volunteer in the Sawtul Ilm Season 2, 2026, organised by Gronthosala Public Library and Social Welfare Organisation held on 10-11 January 2026.",
-    scanUrl: "/src/assets/images/certificate_gronthosala_1780076484644.png",
+    scanUrl: scanGronthosala,
     govRegNo: "ESTD-2022 / REG-9204",
     sha256: "8c30f81d1de4020cdeffd31818274092bbf06a927cd9926d7f3dbdf0fcd839d0",
     registeredOn: "12-01-2026 09:15:45 UTC",
@@ -107,7 +112,7 @@ const certificatesData: Certificate[] = [
     category: "appreciation",
     description: "Spontaneous participation and standout execution in the prestigious 'National Bangla Festival 2020' organized by TAAN_RAAT Group Bangladesh, held at Rabindra Srijonshil University.",
     banglaDesc: "তান_রাত গ্রুপ বাংলাদেশ কর্তৃক আয়োজিত 'জাতীয় বাংলা উৎসব ২০২০' এ স্বতঃস্ফূর্তভাবে অংশগ্রহণ করে মেধার পরিচয় দেওয়ায় অভিনন্দন জানানো যাচ্ছে। আমরা তার সর্বাঙ্গীন সাফল্য কামনা করি।",
-    scanUrl: "/src/assets/images/certificate_taanraat_2020_1780076511405.png",
+    scanUrl: scanTaanraat2020,
     govRegNo: "TRB-NBF-2020-721",
     sha256: "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
     registeredOn: "23-02-2020 18:40:11 UTC",
@@ -130,7 +135,7 @@ const certificatesData: Certificate[] = [
     location: "Uttara, Dhaka, Bangladesh",
     category: "participation",
     description: "Successfully participated and completed the professional development workshop 'HOW TO UNLEASH ONESELF MORE SMARTLY?' to empower personal initiative, agility, and cognitive performance.",
-    scanUrl: "/src/assets/images/certificate_taanraat_2023_1780076540677.png",
+    scanUrl: scanTaanraat2023,
     govRegNo: "TR-WKS-2023-108",
     sha256: "d37f81a74070a20cbffd2c73be92bf06a927cd99d26d7fd3dbdfefcee839d09a",
     registeredOn: "05-03-2023 11:10:02 UTC",
